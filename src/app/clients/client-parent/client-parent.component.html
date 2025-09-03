@@ -1,0 +1,29 @@
+<h1>Clients</h1>
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" [(ngModel)]="filters.name" (input)="onFilterChange()" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Gender</mat-label>
+    <mat-select [(ngModel)]="filters.gender" (selectionChange)="onFilterChange()">
+      <mat-option value="">All</mat-option>
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+      <mat-option value="Other">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Date of Birth</mat-label>
+    <input matInput type="date" [(ngModel)]="filters.dob" (change)="onFilterChange()" />
+  </mat-form-field>
+</div>
+
+<app-client-grid 
+  [filters]="filters"
+  [pageNumber]="pageNumber"
+  [pageSize]="pageSize"
+  (pageChange)="onPageChange($event)">
+</app-client-grid>

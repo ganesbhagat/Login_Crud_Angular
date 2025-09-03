@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span class="brand" routerLink="/">ApiTask</span>
+
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="username; else loginLink">
+    <button mat-button [matMenuTriggerFor]="menu">{{ username }}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </ng-container>
+
+  <ng-template #loginLink>
+    <button mat-button routerLink="/login">Login</button>
+  </ng-template>
+</mat-toolbar>

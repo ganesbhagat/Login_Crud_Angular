@@ -1,0 +1,74 @@
+<mat-card class="client-card">
+  <h2>Add Client</h2>
+  <form [formGroup]="clientForm" (ngSubmit)="submit()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <mat-select formControlName="title">
+        <mat-option value="">Select</mat-option>
+        <mat-option value="Mr">Mr</mat-option>
+        <mat-option value="Mrs">Mrs</mat-option>
+        <mat-option value="Ms">Ms</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" placeholder="First Name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" placeholder="Last Name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="">Select</mat-option>
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div formArrayName="addresses" class="addresses">
+      <div *ngFor="let addr of addresses.controls; let i = index" [formGroupName]="i" class="address-group">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Address Line 1</mat-label>
+          <input matInput formControlName="addressLine1" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Town</mat-label>
+          <input matInput formControlName="town" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Pin Code</mat-label>
+          <input matInput formControlName="pinCode" />
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" type="button" (click)="removeAddress(i)">Remove</button>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+
+    <button mat-raised-button color="accent" type="button" (click)="addAddress()">Add Address</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</mat-card>
+

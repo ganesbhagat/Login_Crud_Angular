@@ -1,0 +1,24 @@
+.client-card {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.address-group {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 15px;
+  margin-right: 10px;
+}
